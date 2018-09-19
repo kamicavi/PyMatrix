@@ -3,8 +3,8 @@ import time
 import os
 
 usage = '''Usage:
-    -f '<filepath>'   Read parameters from <filepath> (not currently implemented).
-    -p              Prompts for parameters.
+    -f '<filepath>' Read parameters from <filepath> (not currently implemented).
+    -p 				Prompts for parameters.
     -c <int>        Colour. <int> should be a valid colour escape code.
     -i <float>      The interval between lines.
     -s <float>      The frequency at which spaces are printed.
@@ -25,7 +25,14 @@ else:
         if arguments[i] == '-p':
             while not colourValid:
                 try:
-                    colour = colours[raw_input('What colour would you like? (light grey, grey, red, green, blue, light blue, pink, white) ').lower()]
+                    colour = raw_input('What colour would you like? (light grey, grey, red, green, blue, light blue, pink, white, or a colour escape code.) ').lower()
+                    if type(colour) == 'str':
+                    	colour = colours[colour]
+                    
+                    elif type(colour) == 'int':
+                    	colour = int(colour)
+
+                    
                     colourValid = True
                     
                 except KeyError:
@@ -33,7 +40,7 @@ else:
                     
             while not intervalValid:
                 try:
-                    interval = float(raw_input('What would you like the interval between lines to be? (seconds) '))
+                    interval = float(raw_input('What would you like the interval between lines to be? (seconds) (suggested: 0.052)'))
                     intervalValid = True
                     
                 except TypeError:
@@ -41,7 +48,23 @@ else:
                 
             while not spaceFreqValid:
                 try:
-                    spaceFreq =
+                    spaceFreq = float(raw_input('What would you like the of spaces to be? (suggested: 0.8) '))
+                    spaceFreqValid = True
+
+                except TypeError:
+                	print('The frequency must be a decimal number')#
+
+            while not charRangeValid:
+            	try:
+            		charRange = tuple(raw_input('What would characters would you like to include? (all basic ASCII characters are (32,126))'))
+            		charRangeValid = True
+            	
+            	except TypeError:
+            		print('The character range should be to ASCII values, in a tuple')
+
+        if arguments[i] == '-c'
+
+
 colour = 92
 interval = 0.052
 spaceFreq = 0.8
