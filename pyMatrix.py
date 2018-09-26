@@ -22,15 +22,16 @@ colours = {
 
 usage = '''Usage:
 	-f '<filepath>' Read parameters from <filepath> (not currently implemented).
-	-p 				Prompts for parameters.
-	-c <int>		Colour. <int> should be a valid colour escape code.
-	-i <float>	  The interval between lines.
-	-s <float>	  The frequency at which spaces are printed.
-	-r <tuple>	  ASCII character range to print. <tuple>[0] and [1] Should be between 32 and 255.
-	-h			  Prints this help.\n'''
+	-p              Prompts for parameters.
+	-c <int>        Colour. <int> should be a valid colour escape code.
+	-i <float>      The interval between lines.
+	-s <float>      The frequency at which spaces are printed.
+	-r <tuple>      ASCII character range to print. <tuple>[0] and [1] Should be between 32 and 255.
+	-h              Prints this help.\n'''
 
 if len(sys.argv) == 1:
 	print(usage)
+	quit()
 	
 else:
 	arguments = sys.argv
@@ -103,15 +104,15 @@ else:
 			colourValid = True
 
 		elif arg == '-i':
-			interval = arguments[i + 1]
+			interval = int(arguments[i + 1])
 			del arguments[i + 1]
 			
 		elif arg == '-s':
-			spaceFreq = arguments[i + 1]
+			spaceFreq = int(arguments[i + 1])
 			del arguments[i + 1]
 			
 		elif arg == '-r':
-			charRange = arguments[i + 1]
+			charRange = arguments[i + 1].split(',')
 			del arguments[i + 1]
 			
 		i += 1
