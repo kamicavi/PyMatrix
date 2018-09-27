@@ -16,7 +16,7 @@ colours = {
 	'yellow'		:'93',
 	'blue'			:'94',
 	'pink'			:'95',
-	'light blue'	:'96',
+	'light blue'		:'96',
 	'white'			:'97'
 }
 
@@ -27,7 +27,8 @@ usage = '''Usage:
 	-i <float>      The interval between lines.
 	-s <float>      The frequency at which spaces are printed.
 	-r <tuple>      ASCII character range to print. <tuple>[0] and [1] Should be between 32 and 255.
-	-h              Prints this help.\n'''
+	-h              Prints this help.
+	-d		Use default parameters. (colour: 92/green, interval: 0.052, space frequency: 0.8, characters: 32,126)/n '''
 
 if len(sys.argv) == 1:
 	print(usage)
